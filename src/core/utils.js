@@ -4,7 +4,8 @@ export function getLogger(tag) {
 
 export function issueToText(issue) {
   if (issue) {
-    return issue.map(i => Object.keys(i).map(p => [p, i[p]].join(': '))).join('\n');
+    return issue.error;
+    //return issue.map(i => Object.keys(i).map(p => [p, i[p]].join(': '))).join('\n');
   }
   return null;
 }
