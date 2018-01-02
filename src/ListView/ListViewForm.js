@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import * as ToastAndroid from "react-native/Libraries/Components/ToastAndroid/ToastAndroid.android";
 import NavigationActions from "../../node_modules/react-navigation/lib-rn/NavigationActions";
 import {getList} from "./ServiceList";
+import email from 'react-native-email';
 
 
 export default class ListViewForm extends Component {
@@ -31,7 +32,15 @@ export default class ListViewForm extends Component {
     }
 
     alertItemName = (item) => {
-        alert(item.name)
+        //alert(item.name)
+            const to = [''] // string or array of email addresses
+            email(to, {
+                // Optional additional arguments
+                cc: [''], // string or array of email addresses
+                bcc: '', // string or array of email addresses
+                subject: 'Reminder!',
+                body: 'Remember to watch ' + item.name
+            }).catch(console.error)
     };
     render() {
         return (
